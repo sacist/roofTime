@@ -69,7 +69,7 @@ const addingHiddenOrNot=()=>{
 }}
 }
 
-function removingCurrentPage(){
+const removingCurrentPage=()=>{
     for(let i=0; i<navText.length;i++ ){
         let tab = navText[i]
         tab.classList.remove('currentPage')
