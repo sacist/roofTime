@@ -19,53 +19,39 @@ const iteration5 = document.querySelector('.iteration5')
 
 
 function clickHandler(event) {
-    if (event.target===doneProjects) {
-        addingHiddenOrNot()
-        iteration2.classList.remove('hiddenOrNot')
-        for(let i=0; i<navText.length;i++ ){
-            let tab = navText[i]
-            tab.classList.remove('currentPage')
-        }
-        doneProjects.classList.add('currentPage')
-    }
-    else if (event.target===arrowRight) {
-        addingHiddenOrNot()
-        iteration3.classList.remove('hiddenOrNot')
-        for(let i=0; i<navText.length;i++ ){
-            let tab = navText[i]
-            tab.classList.remove('currentPage')
-        }
-        doneProjects.classList.add('currentPage')
-    }
-    else if (event.target===arrowLeft) {
-        addingHiddenOrNot()
-        iteration2.classList.remove('hiddenOrNot')
-        for(let i=0; i<navText.length;i++ ){
-            let tab = navText[i]
-            tab.classList.remove('currentPage')
-        }
-        doneProjects.classList.add('currentPage')
-    }
-    else if (event.target===aboutUs) {
-        addingHiddenOrNot()
-        iteration4.classList.remove('hiddenOrNot')
-        for(let i=0; i<navText.length;i++ ){
-            let tab = navText[i]
-            tab.classList.remove('currentPage')
-        }
-        aboutUs.classList.add('currentPage')
-    }
-    else if (event.target===buttonContact) {
-        addingHiddenOrNot()
-        iteration5.classList.remove('hiddenOrNot')
-        for(let i=0; i<navText.length;i++ ){
-            let tab = navText[i]
-            tab.classList.remove('currentPage')
-        }
-        buttonContact.classList.add('currentPage')
+    switch (event.target) {
+        case doneProjects:
+            addingHiddenOrNot()
+            iteration2.classList.remove('hiddenOrNot')
+            removingCurrentPage()
+            doneProjects.classList.add('currentPage')
+            break;
+        case arrowRight:
+            addingHiddenOrNot()
+            iteration3.classList.remove('hiddenOrNot')
+            removingCurrentPage()
+            doneProjects.classList.add('currentPage')
+            break;
+        case arrowLeft:
+            addingHiddenOrNot()
+            iteration2.classList.remove('hiddenOrNot')
+            removingCurrentPage()
+            doneProjects.classList.add('currentPage')
+            break;
+        case aboutUs:
+            addingHiddenOrNot()
+            iteration4.classList.remove('hiddenOrNot')
+            removingCurrentPage()
+            aboutUs.classList.add('currentPage')
+            break;
+        case buttonContact:
+            addingHiddenOrNot()
+            iteration5.classList.remove('hiddenOrNot')
+            removingCurrentPage()
+            buttonContact.classList.add('currentPage')
+            break;
     }
 }
-
 
 
 
@@ -75,14 +61,17 @@ document.addEventListener('click',clickHandler)
 
 
 
-function addingHiddenOrNot(){
+const addingHiddenOrNot=()=>{
     for(let i=0; i<iteration.length;i++ ){
         let currentIteration = iteration[i]
-        if(currentIteration.classList.contains('hiddenOrNot')){
-            continue
-        }
-        else{
+        if(!currentIteration.classList.contains('hiddenOrNot')){
             currentIteration.classList.add('hiddenOrNot')
-        }
+}}
+}
+
+function removingCurrentPage(){
+    for(let i=0; i<navText.length;i++ ){
+        let tab = navText[i]
+        tab.classList.remove('currentPage')
     }
 }
